@@ -1,20 +1,15 @@
 import { create } from 'zustand';
 
-export type Tag = {
-  id: string;
-  name: string | null;
-  value: string | number;
-  type: 'variable' | 'operator' | 'number';
-};
+interface FormulaState {
+  formula: string;
+  variables: Record<string, number>;
+  setFormula: (formula: string) => void;
+  setVariables: (variables: Record<string, number>) => void;
+}
 
-type FormulaStore = {
-  tags: Tag[];
-  addTag: (tag: Tag) => void;
-  removeTag: (id: string) => void;
-};
-
-export const useFormulaStore = create<FormulaStore>((set) => ({
-  tags: [],
-  addTag: (tag) => set((state) => ({ tags: [...state.tags, tag] })),
-  removeTag: (id) => set((state) => ({ tags: state.tags.filter(tag => tag.id !== id) })),
+export const useFormulaStore = create<FormulaState>()((set) => ({
+  formula: '',
+  variables: {},
+  setFormula: (formula) => set({ formula }),
+  setVariables: (variables) => set({ variables }),
 }));

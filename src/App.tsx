@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { FormulaInput } from './components/FormulaInput';
+import { FormulaEditor } from './components/FormulaInput';
 
 const queryClient = new QueryClient();
 
@@ -8,7 +8,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <div style={{ padding: '20px' }}>
         <h1>Formula Input</h1>
-        <FormulaInput />
+        <FormulaEditor />
       </div>
     </QueryClientProvider>
   );
